@@ -5,12 +5,29 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:longevity_ai/ui/router/root_router.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'globals.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
 
+  WindowOptions windowOptions = const WindowOptions(
+//    fullScreen: true,
+    size: Size(1700, 1080),
+    center: true,
+    backgroundColor: Colors.transparent,
+    skipTaskbar: false,
+    titleBarStyle: TitleBarStyle.normal,
+  );
+  windowManager.waitUntilReadyToShow(windowOptions, () async {
+    final size = await windowManager.getSize();
+//    await windowManager.setSize(size);
+    await windowManager.show();
+    await windowManager.focus();
+//    await windowManager.unmaximize();
+  });
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
@@ -49,6 +66,10 @@ class MyApp extends ConsumerWidget {
             return MaterialApp.router(
               theme: ThemeData(
                 primarySwatch: Colors.blue,
+                buttonTheme: ButtonThemeData(
+                  layoutBehavior: ButtonBarLayoutBehavior.padded,
+                  minWidth: 5.w,
+                )
               ),
               routerDelegate: AppRouter.delegate(),
               routeInformationProvider: AppRouter.routeInfoProvider(),
