@@ -48,12 +48,11 @@ class AppStyles {
   //       decorationColor: Colors.white,
   //     );
   static TextStyle _textStyle(double fontSize) => GoogleFonts.poppins(
-    //for desktops we don't need scale font sizes
-    fontSize: Platform.isAndroid || Platform.isIOS ? fontSize.sp : fontSize,
-    color: AppColors.plainText,
-    decoration: null,
-    decorationColor: Colors.white
-  );
+      //for desktops we don't need scale font sizes
+      fontSize: Platform.isAndroid || Platform.isIOS ? fontSize.sp : fontSize,
+      color: AppColors.plainText,
+      decoration: null,
+      decorationColor: Colors.white);
 }
 
 extension TextStyleX on TextStyle {

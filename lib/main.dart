@@ -22,11 +22,8 @@ void main() async {
     titleBarStyle: TitleBarStyle.normal,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
-    final size = await windowManager.getSize();
-//    await windowManager.setSize(size);
     await windowManager.show();
     await windowManager.focus();
-//    await windowManager.unmaximize();
   });
 
   await SystemChrome.setPreferredOrientations([
@@ -44,10 +41,10 @@ void main() async {
   );
 
   runZonedGuarded(
-          () => runApp(
-        const ProviderScope(child: MyApp()),
-      ),
-          (error, stack) {});
+      () => runApp(
+            const ProviderScope(child: MyApp()),
+          ),
+      (error, stack) {});
 }
 
 // Extend ConsumerWidget instead of StatelessWidget,
@@ -65,12 +62,11 @@ class MyApp extends ConsumerWidget {
           builder: (context) {
             return MaterialApp.router(
               theme: ThemeData(
-                primarySwatch: Colors.blue,
-                buttonTheme: ButtonThemeData(
-                  layoutBehavior: ButtonBarLayoutBehavior.padded,
-                  minWidth: 5.w,
-                )
-              ),
+                  primarySwatch: Colors.blue,
+                  buttonTheme: ButtonThemeData(
+                    layoutBehavior: ButtonBarLayoutBehavior.padded,
+                    minWidth: 5.w,
+                  )),
               routerDelegate: AppRouter.delegate(),
               routeInformationProvider: AppRouter.routeInfoProvider(),
               routeInformationParser: AppRouter.defaultRouteParser(),

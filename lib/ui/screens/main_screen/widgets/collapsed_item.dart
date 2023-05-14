@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 
 class CollapsedItem extends StatefulWidget {
   const CollapsedItem(
-    {
-      super.key,
+      {super.key,
       required this.children,
       this.leading,
       required this.title,
       this.trailing = true,
-      this.titleStyle
-    }
-  );
+      this.titleStyle});
   final List<Widget> children;
   final Image? leading;
   final bool trailing;
@@ -37,16 +34,11 @@ class CollapsedItemState extends State<CollapsedItem> {
       // backgroundColor: AppColors.backgroundRose,
       // collapsedBackgroundColor: AppColors.backgroundRose,
       onExpansionChanged: (state) => setState(() => _expanded = state),
-      trailing: Icon(
-        _expanded ?  Icons.expand_more : Icons.expand_less
-      ),
+      trailing: Icon(_expanded ? Icons.expand_more : Icons.expand_less),
       title: Row(
         children: [
           if (widget.leading != null) ...[widget.leading!],
-          Text(
-            widget.title,
-            style: widget.titleStyle
-          ),
+          Text(widget.title, style: widget.titleStyle),
         ],
       ),
       children: widget.children,

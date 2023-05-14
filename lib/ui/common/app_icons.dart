@@ -10,6 +10,5 @@ class AppIcons {
   static const String imageSearch = 'assets/images/search.png';
   static const String imageChat = 'assets/images/chat.png';
 
-
   static const String logo = 'assets/images/logo.png';
 }

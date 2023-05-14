@@ -3,7 +3,7 @@ import 'package:longevity_ai/ui/common/app_colors.dart';
 import 'package:longevity_ai/ui/common/app_extensions.dart';
 import 'package:longevity_ai/ui/common/app_icons.dart';
 
-class ButtonExpand extends StatelessWidget{
+class ButtonExpand extends StatelessWidget {
   const ButtonExpand({super.key, required this.onTap});
 
   final void Function() onTap;
@@ -18,11 +18,13 @@ class ButtonExpand extends StatelessWidget{
         decoration: BoxDecoration(
             color: AppColors.backgroundWhite,
             borderRadius: BorderRadius.circular(32.r),
-            border: Border.all(color: AppColors.borderLeftBar)
+            border: Border.all(color: AppColors.borderLeftBar)),
+        child: Image.asset(
+          AppIcons.imageExpand,
+          width: 32.r,
+          height: 32.r,
         ),
-        child: Image.asset(AppIcons.imageExpand, width: 32.r, height: 32.r,),
       ),
     );
   }
-
 }

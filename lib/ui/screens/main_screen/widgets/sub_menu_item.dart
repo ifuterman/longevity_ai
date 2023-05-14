@@ -7,17 +7,15 @@ import 'package:longevity_ai/ui/screens/main_screen/main_screen.dart';
 
 import 'left_bar.dart';
 
-class SubMenuItem extends ConsumerWidget{
-  const SubMenuItem(
-    {
-      super.key,
-      required this.selectedItemProvider,
-      required this.items,
-      required this.title,
-      required this.itemType,
-      this.onTap,
-    }
-  );
+class SubMenuItem extends ConsumerWidget {
+  const SubMenuItem({
+    super.key,
+    required this.selectedItemProvider,
+    required this.items,
+    required this.title,
+    required this.itemType,
+    this.onTap,
+  });
 
   final SelectedItemNotifierProvider selectedItemProvider;
   final List<SubItem> items;
@@ -28,12 +26,13 @@ class SubMenuItem extends ConsumerWidget{
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentItem = ref.watch(selectedItemProvider);
-    debugPrint('SubMenuItem.build currentItem = $currentItem, itemType = $itemType');
-    if(currentItem == itemType){
+    debugPrint(
+        'SubMenuItem.build currentItem = $currentItem, itemType = $itemType');
+    if (currentItem == itemType) {
       return buildExpandedItem(context, currentItem);
     }
-    for(final item in items){
-      if(item.itemType == currentItem){
+    for (final item in items) {
+      if (item.itemType == currentItem) {
         return buildExpandedItem(context, currentItem);
       }
     }
@@ -43,14 +42,14 @@ class SubMenuItem extends ConsumerWidget{
     );
   }
 
-  Widget buildExpandedItem(BuildContext context, SelectedLeftBarItem currentItem){
+  Widget buildExpandedItem(
+      BuildContext context, SelectedLeftBarItem currentItem) {
     debugPrint('SubMenuItem.buildExpandedItem items.length = ${items.length}');
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.backgroundMenu,
-        //  color: Colors.red,
-        borderRadius: BorderRadius.all(Radius.circular(12.r))
-      ),
+          color: AppColors.backgroundMenu,
+          //  color: Colors.red,
+          borderRadius: BorderRadius.all(Radius.circular(12.r))),
       child: Column(
         children: [
           ListTile(
@@ -62,13 +61,13 @@ class SubMenuItem extends ConsumerWidget{
             child: ListView.builder(
               itemCount: items.length,
               shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: items[index].itemType ==  currentItem ?
-                      AppColors.backgroundWhite : AppColors.backgroundMenu,
-                    borderRadius: BorderRadius.all(Radius.circular(10.r))
-                  ),
+                      color: items[index].itemType == currentItem
+                          ? AppColors.backgroundWhite
+                          : AppColors.backgroundMenu,
+                      borderRadius: BorderRadius.all(Radius.circular(10.r))),
                   child: items[index],
                 );
               },
@@ -80,8 +79,10 @@ class SubMenuItem extends ConsumerWidget{
   }
 }
 
-class SubItem extends StatelessWidget{
-  const SubItem({super.key, required SelectedLeftBarItem itemType, required this.item}) : _itemType = itemType;
+class SubItem extends StatelessWidget {
+  const SubItem(
+      {super.key, required SelectedLeftBarItem itemType, required this.item})
+      : _itemType = itemType;
   final SelectedLeftBarItem _itemType;
   SelectedLeftBarItem get itemType => _itemType;
   final ListTile item;
@@ -89,5 +90,4 @@ class SubItem extends StatelessWidget{
   Widget build(BuildContext context) {
     return item;
   }
-
 }
