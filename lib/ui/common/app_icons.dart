@@ -9,6 +9,13 @@ class AppIcons {
   static const String imageHome = 'assets/images/home.png';
   static const String imageSearch = 'assets/images/search.png';
   static const String imageChat = 'assets/images/chat.png';
+  static const String imageSmallLogo = 'assets/images/small_logo.png';
+  static const String imageStubAvatar = 'assets/images/stub_avatar.png';
+  static const String imageSortList = 'assets/images/sort_list.png';
+  static const String imageExport = 'assets/images/export.png';
+  static const String imageBloodResults = 'assets/images/blood_results.png';
+  static const String imageChevronDown = 'assets/images/chevron_down.png';
+  static const String imageChevronUp = 'assets/images/chevron_up.png';
 
   static const String logo = 'assets/images/logo.png';
 }

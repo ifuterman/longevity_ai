@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:longevity_ai/globals.dart';
 import 'package:longevity_ai/ui/common/app_colors.dart';
 import 'package:longevity_ai/ui/common/app_extensions.dart';
 import 'package:longevity_ai/ui/common/app_icons.dart';
+import 'package:longevity_ai/ui/router/root_router.dart';
+import 'package:longevity_ai/ui/router/root_router.gr.dart';
 import 'package:longevity_ai/ui/screens/main_screen/widgets/left_bar.dart';
 
 @RoutePage()
@@ -28,10 +30,8 @@ class MainScreenState extends State<MainScreen> {
           Row(
             children: [
               LeftBar(controller: widget._controller),
-              Expanded(
-                child: Container(
-                    //                color: Colors.red,
-                    ),
+              const Expanded(
+                child: AutoRouter(),
               )
             ],
           ),
@@ -46,8 +46,7 @@ class MainScreenState extends State<MainScreen> {
                   ///41 - collapsed width
                   ///16 - button radius
                   widget._controller.isLeftBarExpanded
-                      ? (280 - 16).sbWidth
-                      : (41 - 16).sbWidth,
+                      ? (280 - 16).sbWidth : (41 - 16).sbWidth,
                   RawMaterialButton(
                     elevation: 0,
                     fillColor: AppColors.backgroundWhite,
@@ -89,7 +88,20 @@ class MainScreenController {
 
   void leftBarItemSelected(SelectedLeftBarItem item) {
     debugPrint('MainScreenController.leftBarItemSelected $item');
+    final old = appRef.read(selectedItemProvider);
+    if(old == item){
+      return;
+    }
     appRef.read(selectedItemProvider.notifier).setSelectedItem(item);
+    switch(item){
+      case SelectedLeftBarItem.patientBiomarkersBloodTest:{
+        AppRouter.replace(BloodTestRoute());
+        break;
+      }
+      default:{
+        AppRouter.replace(const PlaceHolderRoute());
+      }
+    }
   }
 }
 

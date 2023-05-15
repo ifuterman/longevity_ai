@@ -36,6 +36,8 @@ class AppStyles {
 
   static final text25 = _textStyle(25);
 
+  static final text32 = _textStyle(32);
+
   static final text36 = _textStyle(36);
 
   static final text40 = _textStyle(40);

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:longevity_ai/ui/screens/main_screen/pages/place_holder_page.dart';
 
 import 'root_router.gr.dart';
 
@@ -10,7 +11,22 @@ class RootRouter extends $RootRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: MainRoute.page, initial: true),
+        AutoRoute(
+          page: MainRoute.page,
+          initial: true,
+          children: [
+            CustomRoute(
+              page: PlaceHolderRoute.page,
+              initial: true,
+              transitionsBuilder: TransitionsBuilders.noTransition
+            ),
+            CustomRoute(
+                page: BloodTestRoute.page,
+                transitionsBuilder: TransitionsBuilders.noTransition,
+                durationInMilliseconds: 100
+            ),
+          ]
+        ),
       ];
 }
 

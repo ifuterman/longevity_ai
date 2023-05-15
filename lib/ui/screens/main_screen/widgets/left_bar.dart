@@ -256,6 +256,7 @@ class _LeftBarExpanded extends ConsumerWidget {
                     width: 231.w,
                     color: AppColors.borderLeftBar,
                   ),
+                  20.sbHeight,
                   CollapsedItem(
                     title: 'Menu',
                     titleStyle: AppStyles.text16
