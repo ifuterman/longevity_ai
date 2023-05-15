@@ -42,13 +42,6 @@ class AppStyles {
 
   static final text40 = _textStyle(40);
 
-  // static TextStyle _textStyle(double fontSize) => TextStyle(
-  //       fontSize: fontSize.sp,
-  //       fontFamily: font,
-  //       color: AppColors.plainText,
-  //       decoration: null,
-  //       decorationColor: Colors.white,
-  //     );
   static TextStyle _textStyle(double fontSize) => GoogleFonts.poppins(
       //for desktops we don't need scale font sizes
       fontSize: Platform.isAndroid || Platform.isIOS ? fontSize.sp : fontSize,

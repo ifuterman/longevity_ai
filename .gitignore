@@ -1,4 +1,5 @@
 # Miscellaneous
+*.lock
 *.class
 *.log
 *.pyc
@@ -32,6 +33,7 @@ migrate_working_dir/
 .pub/
 /build/
 /generated/
+generated/
 
 # Symbolication related
 app.*.symbols

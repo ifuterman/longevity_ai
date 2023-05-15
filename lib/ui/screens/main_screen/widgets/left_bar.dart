@@ -88,7 +88,7 @@ class _LeftBarExpanded extends ConsumerWidget {
             color: AppColors.borderLeftBar,
           ),
           20.sbHeight,
-          Container(
+          SizedBox(
               width: 231.w,
 //            height: MediaQuery.of(context).size.height - 186.h,
               child: ListView(

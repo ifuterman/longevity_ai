@@ -6,7 +6,6 @@ class AppColors {
   static const textLightGreen = Color(0xFF2C9393);
   static const textHint = Color(0xFF818181);
 
-
   static const iconBack = Color(0xFF2C9393);
 
   static const backgroundLeftBar = Color(0xFFE0F6F6);
@@ -19,4 +18,6 @@ class AppColors {
 
   static const scaleGreenColor = Color(0xFF8BE2A8);
   static const scaleYellowColor = Color(0xFFFFD700);
+
+  static const sideButtonSelected = Color(0xFF8BE2A8);
 }

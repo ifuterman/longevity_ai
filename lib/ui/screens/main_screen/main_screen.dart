@@ -46,7 +46,8 @@ class MainScreenState extends State<MainScreen> {
                   ///41 - collapsed width
                   ///16 - button radius
                   widget._controller.isLeftBarExpanded
-                      ? (280 - 16).sbWidth : (41 - 16).sbWidth,
+                      ? (280 - 16).sbWidth
+                      : (41 - 16).sbWidth,
                   RawMaterialButton(
                     elevation: 0,
                     fillColor: AppColors.backgroundWhite,
@@ -89,18 +90,20 @@ class MainScreenController {
   void leftBarItemSelected(SelectedLeftBarItem item) {
     debugPrint('MainScreenController.leftBarItemSelected $item');
     final old = appRef.read(selectedItemProvider);
-    if(old == item){
+    if (old == item) {
       return;
     }
     appRef.read(selectedItemProvider.notifier).setSelectedItem(item);
-    switch(item){
-      case SelectedLeftBarItem.patientBiomarkersBloodTest:{
-        AppRouter.replace(BloodTestRoute());
-        break;
-      }
-      default:{
-        AppRouter.replace(const PlaceHolderRoute());
-      }
+    switch (item) {
+      case SelectedLeftBarItem.patientBiomarkersBloodTest:
+        {
+          AppRouter.replace(BloodTestRoute());
+          break;
+        }
+      default:
+        {
+          AppRouter.replace(const PlaceHolderRoute());
+        }
     }
   }
 }

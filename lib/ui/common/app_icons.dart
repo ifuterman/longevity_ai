@@ -16,6 +16,11 @@ class AppIcons {
   static const String imageBloodResults = 'assets/images/blood_results.png';
   static const String imageChevronDown = 'assets/images/chevron_down.png';
   static const String imageChevronUp = 'assets/images/chevron_up.png';
+  static const String imageStubGraphAge = 'assets/images/stub_graph_age.png';
+  static const String imageStubGraphPeople =
+      'assets/images/stub_graph_people.png';
+  static const String imageStubTrend = 'assets/images/stub_trend.png';
+  static const String imageArrowDown = 'assets/images/arrow_down.png';
 
   static const String logo = 'assets/images/logo.png';
 }

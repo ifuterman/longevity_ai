@@ -27,12 +27,6 @@ class CollapsedItemState extends State<CollapsedItem> {
   Widget build(BuildContext context) {
     return ExpansionTile(
       shape: const Border(),
-      // shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.all(Radius.circular(10.r))),
-      // collapsedShape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.all(Radius.circular(10.r))),
-      // backgroundColor: AppColors.backgroundRose,
-      // collapsedBackgroundColor: AppColors.backgroundRose,
       onExpansionChanged: (state) => setState(() => _expanded = state),
       trailing: Icon(_expanded ? Icons.expand_more : Icons.expand_less),
       title: Row(

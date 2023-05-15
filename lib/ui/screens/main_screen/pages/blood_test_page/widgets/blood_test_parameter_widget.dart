@@ -6,8 +6,9 @@ import 'package:longevity_ai/ui/common/app_extensions.dart';
 import 'package:longevity_ai/ui/common/app_styles.dart';
 import 'package:longevity_ai/ui/screens/main_screen/pages/blood_test_page/widgets/tests_widget.dart';
 
-class BloodTestParameterWidget extends ConsumerWidget{
-  const BloodTestParameterWidget({super.key, required this.parameter, required this.controller});
+class BloodTestParameterWidget extends ConsumerWidget {
+  const BloodTestParameterWidget(
+      {super.key, required this.parameter, required this.controller});
 
   final TestParameter parameter;
   final TestsWidgetController controller;
@@ -19,11 +20,13 @@ class BloodTestParameterWidget extends ConsumerWidget{
       onTap: () => controller.parameterSelected(parameter),
       child: Container(
         //padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 25.h),
-        padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 24.h, bottom: 16.h),
+        padding:
+            EdgeInsets.only(left: 25.w, right: 25.w, top: 24.h, bottom: 16.h),
         decoration: BoxDecoration(
-          color: selectedParam == parameter ? AppColors.backgroundMenu : AppColors.backgroundWhite,
-          border: Border.all(color: AppColors.borderElements)
-        ),
+            color: selectedParam == parameter
+                ? AppColors.backgroundMenu
+                : AppColors.backgroundWhite,
+            border: Border.all(color: AppColors.borderElements)),
         child: Column(
           children: [
             Row(
@@ -35,17 +38,21 @@ class BloodTestParameterWidget extends ConsumerWidget{
                 const Spacer(),
                 Text(
                   '${parameter.currentValue} ${parameter.units}',
-                  style: AppStyles.text14.andWeight(FontWeight.w400).andColor(AppColors.textHint),
+                  style: AppStyles.text14
+                      .andWeight(FontWeight.w400)
+                      .andColor(AppColors.textHint),
                 ),
                 8.sbWidth,
                 Icon(
-                  parameter.trendDirection == TrendDirection.up ? Icons.trending_up : Icons.trending_down,
+                  parameter.trendDirection == TrendDirection.up
+                      ? Icons.trending_up
+                      : Icons.trending_down,
                   size: 15.r,
                 ),
               ],
             ),
             15.sbHeight,
-            Container(
+            SizedBox(
               height: 34,
               width: 430.w,
               child: Stack(
@@ -55,8 +62,7 @@ class BloodTestParameterWidget extends ConsumerWidget{
                     height: 6.h,
                     margin: EdgeInsets.only(top: 4.h),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(71.r)
-                    ),
+                        borderRadius: BorderRadius.circular(71.r)),
                     child: ScaleWidget(
                       width: 422.w,
                       parameter: parameter,
@@ -81,7 +87,7 @@ class BloodTestParameterWidget extends ConsumerWidget{
   }
 }
 
-class ScaleValueWidget extends StatelessWidget{
+class ScaleValueWidget extends StatelessWidget {
   const ScaleValueWidget({super.key, required this.value});
   final double value;
   @override
@@ -96,14 +102,16 @@ class ScaleValueWidget extends StatelessWidget{
         ),
         Text(
           '$value',
-          style: AppStyles.text11.andWeight(FontWeight.w400).andColor(value == 0 ? Colors.transparent : AppColors.textHint),
+          style: AppStyles.text11
+              .andWeight(FontWeight.w400)
+              .andColor(value == 0 ? Colors.transparent : AppColors.textHint),
         )
       ],
     );
   }
 }
 
-class ScaleWidget extends StatelessWidget{
+class ScaleWidget extends StatelessWidget {
   const ScaleWidget({super.key, required this.parameter, required this.width});
   final TestParameter parameter;
   final double width;
@@ -115,10 +123,11 @@ class ScaleWidget extends StatelessWidget{
     final leftWidth = parameter.currentValue * scale;
     final rigthWidth = width - leftWidth;
     Color color = AppColors.scaleGreenColor;
-    if(parameter.currentValue > parameter.maxValue || parameter.currentValue < parameter.minValue){
+    if (parameter.currentValue > parameter.maxValue ||
+        parameter.currentValue < parameter.minValue) {
       color = AppColors.scaleYellowColor;
     }
-    if(leftWidth == width){
+    if (leftWidth == width) {
       return Container(
         height: 6.h,
         width: width,
@@ -154,22 +163,5 @@ class ScaleWidget extends StatelessWidget{
         ),
       ],
     );
-    return Container(
-      height: 6.h,
-      width: width,
-      decoration: BoxDecoration(
-//        color: color.withOpacity(0.2),
-          color: Colors.red
-//        borderRadius: BorderRadius.circular(71.r),
-      ),
-      child: SizedBox(
-        height: 6.h,
-        width: 20,
-        child: Container(
-//          color: Colors.black,
-        ),
-      ),
-    );
   }
-
 }

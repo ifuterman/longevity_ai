@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:longevity_ai/domain/test/test.dart';
 import 'package:longevity_ai/globals.dart';
@@ -11,8 +9,9 @@ import 'package:intl/intl.dart';
 import 'package:longevity_ai/ui/screens/main_screen/pages/blood_test_page/widgets/blood_test_parameter_widget.dart';
 import 'package:longevity_ai/ui/screens/main_screen/pages/blood_test_page/widgets/tests_widget.dart';
 
-class BloodTestWidget extends StatefulWidget{
-  const BloodTestWidget({super.key, required this.test, required this.controller});
+class BloodTestWidget extends StatefulWidget {
+  const BloodTestWidget(
+      {super.key, required this.test, required this.controller});
 
   final Test test;
   final TestsWidgetController controller;
@@ -20,10 +19,9 @@ class BloodTestWidget extends StatefulWidget{
   State<StatefulWidget> createState() {
     return BloodTestWidgetState();
   }
-
 }
 
-class BloodTestWidgetState extends State<BloodTestWidget>{
+class BloodTestWidgetState extends State<BloodTestWidget> {
   BloodTestWidgetState();
   bool _expanded = false;
   final format = DateFormat('MMM dd');
@@ -40,7 +38,10 @@ class BloodTestWidgetState extends State<BloodTestWidget>{
         height: 58.r,
         width: 58.r,
       ),
-      trailing: Image.asset(_expanded ? AppIcons.imageChevronDown : AppIcons.imageChevronUp, height: 32.h, width: 32.w),
+      trailing: Image.asset(
+          _expanded ? AppIcons.imageChevronDown : AppIcons.imageChevronUp,
+          height: 32.h,
+          width: 32.w),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -55,23 +56,27 @@ class BloodTestWidgetState extends State<BloodTestWidget>{
         ],
       ),
       children: List<Widget>.generate(
-        widget.test.params.length,
-        (index) => BloodTestParameterWidget(parameter: widget.test.params[index], controller: widget.controller,)
-      ),
+          widget.test.params.length,
+          (index) => BloodTestParameterWidget(
+                parameter: widget.test.params[index],
+                controller: widget.controller,
+              )),
     );
   }
-  void expansionChanged(bool state){
+
+  void expansionChanged(bool state) {
     setState(() {
       _expanded = state;
     });
+
     ///We need remove selected item if this item belongs to this test.
     ///We need this to remove the graph part from the screen
     final param = appRef.read(widget.controller.currentParameterProvider);
-    if(param == null){
+    if (param == null) {
       return;
     }
-    for(final p in widget.test.params){
-      if(p == param){
+    for (final p in widget.test.params) {
+      if (p == param) {
         widget.controller.parameterUnselected();
         return;
       }

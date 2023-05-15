@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:longevity_ai/ui/common/app_colors.dart';
 import 'package:longevity_ai/ui/common/app_extensions.dart';
